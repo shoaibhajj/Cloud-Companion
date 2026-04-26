@@ -21,7 +21,7 @@ services:
   app:
     build:
       context: .
-      dockerfile: artifacts/nabk-directory/Dockerfile
+      dockerfile: Dockerfile
     restart: unless-stopped
     depends_on:
       postgres:
