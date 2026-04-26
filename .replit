@@ -9,7 +9,6 @@ args = ["pnpm", "store", "prune"]
 env = { "CI" = "true" }
 
 [workflows]
-runButton = "Project"
 
 [agent]
 stack = "PNPM_WORKSPACE"
@@ -20,9 +19,19 @@ path = "scripts/post-merge.sh"
 timeoutMs = 20000
 
 [[ports]]
+localPort = 5000
+externalPort = 5000
+
+[[ports]]
 localPort = 8080
 externalPort = 8080
 
 [[ports]]
 localPort = 8081
 externalPort = 80
+
+[userenv]
+
+[userenv.shared]
+AUTH_SECRET = "gJ6gNqERe4BNzDUFzxrWpe5qc2HVOqOzRa/ByRQgVBE="
+NEXTAUTH_SECRET = "gJ6gNqERe4BNzDUFzxrWpe5qc2HVOqOzRa/ByRQgVBE="

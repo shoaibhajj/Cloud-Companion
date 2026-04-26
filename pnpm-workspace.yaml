@@ -72,6 +72,10 @@ onlyBuiltDependencies:
   - esbuild
   - msw
   - unrs-resolver
+  - '@prisma/client'
+  - '@prisma/engines'
+  - prisma
+  - sharp
 
 overrides:
   # replit uses linux-x64 only, we can exclude all other platforms
