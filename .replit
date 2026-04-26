@@ -1,4 +1,4 @@
-modules = ["nodejs-24"]
+modules = ["nodejs-24", "postgresql-16"]
 
 [deployment]
 router = "application"
@@ -35,3 +35,6 @@ externalPort = 80
 [userenv.shared]
 AUTH_SECRET = "gJ6gNqERe4BNzDUFzxrWpe5qc2HVOqOzRa/ByRQgVBE="
 NEXTAUTH_SECRET = "gJ6gNqERe4BNzDUFzxrWpe5qc2HVOqOzRa/ByRQgVBE="
+
+[nix]
+channel = "stable-25_05"
