@@ -1,8 +1,6 @@
-version: "3.9"
-
 # Production-ready compose for دليل النبك self-hosting.
 # Run from the repository root:
-#   docker compose -f artifacts/nabk-directory/docker-compose.yml up -d
+#   docker compose -f docker-compose.prod.yml up -d
 
 services:
   postgres:
@@ -22,7 +20,7 @@ services:
 
   app:
     build:
-      context: ../..
+      context: .
       dockerfile: artifacts/nabk-directory/Dockerfile
     restart: unless-stopped
     depends_on:
@@ -31,6 +29,7 @@ services:
     environment:
       DATABASE_URL: postgresql://${POSTGRES_USER:-nabk}:${POSTGRES_PASSWORD:-changeme}@postgres:5432/${POSTGRES_DB:-nabk_directory}
       AUTH_SECRET: ${AUTH_SECRET:?AUTH_SECRET required}
+      NEXTAUTH_SECRET: ${AUTH_SECRET:?AUTH_SECRET required}
       NEXT_PUBLIC_APP_URL: ${NEXT_PUBLIC_APP_URL:-http://localhost:3000}
       RESEND_API_KEY: ${RESEND_API_KEY:-}
       RESEND_FROM_EMAIL: ${RESEND_FROM_EMAIL:-noreply@example.com}
@@ -48,7 +47,7 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./nginx/nabk.conf:/etc/nginx/conf.d/default.conf:ro
       # Mount your TLS certs for HTTPS:
       # - /etc/letsencrypt/live/your-domain/:/etc/nginx/certs/:ro
 
