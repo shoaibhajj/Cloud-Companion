@@ -12,21 +12,10 @@ paths = ["/api"]
 [services.development]
 run = "pnpm --filter @workspace/api-server run dev"
 
-[services.production]
-
-[services.production.build]
-args = ["pnpm", "--filter", "@workspace/api-server", "run", "build"]
-
-[services.production.build.env]
-NODE_ENV = "production"
-
-[services.production.run]
-# we don't run through pnpm to make startup faster in production
-args = ["node", "--enable-source-maps", "artifacts/api-server/dist/index.mjs"]
-
-[services.production.run.env]
-PORT = "8080"
-NODE_ENV = "production"
-
-[services.production.health.startup]
-path = "/api/healthz"
+# NOTE: This artifact is leftover starter scaffolding and is intentionally
+# NOT deployed to production. Nothing in the active app (the Next.js
+# `nabk-directory`) depends on `@workspace/api-server`, and its `paths =
+# ["/api"]` would collide with the Next.js app's own `/api/auth/*`
+# (NextAuth) and `/api/health` routes when published. The development
+# `run` is preserved so the local sandbox keeps working unchanged; remove
+# this artifact entirely if you decide it isn't needed.
