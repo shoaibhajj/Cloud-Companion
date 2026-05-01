@@ -47,3 +47,38 @@ Thumbs.db
 # Replit
 .cache/
 .local/
+
+
+
+# Next.js build/cache
+artifacts/nabk-directory/.next/
+artifacts/nabk-directory/.next/dev/
+artifacts/nabk-directory/test-results/
+artifacts/nabk-directory/.turbo/
+artifacts/nabk-directory/.vercel/
+
+# Local / pnpm / Replit caches
+.config/
+.agents/
+
+# Generated / large assets
+attached_assets/
+*.log
+*.map
+*.tsbuildinfo
+
+# Node / package manager
+node_modules/
+.pnpm-store/
+# Next.js build/cache
+artifacts/nabk-directory/.next/
+artifacts/nabk-directory/test-results/
+.local/
+.config/
+.agents/
+attached_assets/
+*.log
+*.map
+*.tsbuildinfo
+node_modules/
+.pnpm-store/
